@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h3>GUEST PAGE</h3>
+	<h2>GIT HUB TEST</h2>
 	<a href="#" class="move-btn">목록으로</a>
 </body>
 <script type="text/javascript">
