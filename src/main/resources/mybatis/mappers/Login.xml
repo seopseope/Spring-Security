@@ -4,4 +4,24 @@
 	<select id="getUserInfo" parameterType="String" resultType="com.spring.security.CustomUserDetails">
 		SELECT mem_id, mem_pw, mem_nm, mem_team FROM gps.member_info WHERE mem_id = #{userId}
 	</select>
+	
+	<insert id="getUserInsert" parameterType="HashMap">
+		INSERT INTO gps.member_info
+			(
+				 mem_id
+				,mem_pw
+				,mem_nm
+				,mem_team
+			) VALUES
+			(
+				 #{userId}
+				,#{userPwd}
+				,#{userName}
+				,#{userAuth}
+			)
+	</insert>
+	
+	<select id="getUserIdChk" parameterType="String" resultType="HashMap">
+		SELECT mem_id FROM gps.member_info WHERE mem_id = #{userId};
+	</select>
 </mapper>

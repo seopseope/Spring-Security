@@ -21,8 +21,23 @@
 		
 		<label for="remember-me">자동 로그인</label>
 		<input type="checkbox" id="remember-me" name="remember-me"/>
+		<a href="#" class="btn-signUp">회원가입</a>
 	</form>
 </body>
 <script type="text/javascript">
+	function addButtonEvent(){
+		$(".btn-signUp").click(function(e){
+			e.preventDefault();
+			fnPageMove();
+		});
+	}
+	
+	function fnPageMove(){
+		location.href = "<c:url value="/login/signUpPage.do"/>";
+	}
+	
+	$(function(){
+		addButtonEvent();
+	});
 </script>
 </html>

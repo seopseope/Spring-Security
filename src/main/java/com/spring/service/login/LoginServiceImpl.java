@@ -18,4 +18,22 @@ public class LoginServiceImpl implements LoginService{
 		return null;
 	}
 
+	@Override
+	public int getInsertSignUp(HashMap<String, Object> hashMap) {
+		return loginDao.getUserInsert(hashMap);
+	}
+
+	@Override
+	public HashMap<String, Object> getUserIdChk(String userId) {
+		HashMap<String, Object> hashMap = new HashMap<String, Object>();
+		
+		try {
+			hashMap = loginDao.getUserIdChk(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return hashMap;
+	}
+
 }
