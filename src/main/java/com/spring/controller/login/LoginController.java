@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginPage.do")
 	public String loginPage(Model model) {
@@ -90,6 +94,14 @@ public class LoginController {
 			}
 			
 			signMap.putAll(map);
+			
+			String userPwd = signMap.get("userPwd").toString();
+			System.out.println("사용자 입력 비밀번호 >>> : " + userPwd);
+			
+			// 비밀번호 암호화(BCryptPasswordEncoder 방법)
+			String enPassword = passwordEncoder.encode(signMap.get("userPwd").toString());
+			System.out.println("암호화된 비밀번호 >>> : " + enPassword);
+			signMap.put("userPwd", enPassword);
 			
 			int result = loginService.getInsertSignUp(signMap);
 			
