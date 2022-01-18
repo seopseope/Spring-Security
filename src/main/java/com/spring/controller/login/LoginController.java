@@ -1,7 +1,5 @@
 package com.spring.controller.login;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +16,6 @@ public class LoginController {
 	
 	@RequestMapping("/loginPage.do")
 	public String loginPage(Model model) {
-		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		
-		String userId = "AC925489";
-//		hashMap = loginService.getUserInfo(userId);
-		
 		return "/login/loginPage";
 	}
 	

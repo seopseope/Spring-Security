@@ -15,11 +15,6 @@ public class LoginServiceImpl implements LoginService{
 	
 	@Override
 	public HashMap<String, Object> getUserInfo(String userId) {
-//		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-//		
-//		hashMap = loginDao.getUserInfo(userId);
-//		
-//		return hashMap;
 		return null;
 	}
 
