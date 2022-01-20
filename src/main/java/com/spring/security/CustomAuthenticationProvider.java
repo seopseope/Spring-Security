@@ -33,6 +33,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 //		}
 		
 		// BCryptPasswordEncoder로 암호화된 패스워드는 PasswordEncoder의 함수 matches로 사용자 입력값과 DB의 암호화된 패스워드 값을 비교해야한다.
+		// BCryptPasswordEncoder는 암호화는 가능하고 복호화는 불가능하기 떄문에 PasswordEncoder의 matches를 통해서 비밀번호 값을 비교해야 된다.
 		if(!passwordEncoder.matches(userPwd, user.getPassword())) {
 			throw new BadCredentialsException(userId);
 		}
