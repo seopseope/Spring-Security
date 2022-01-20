@@ -22,7 +22,7 @@ public class SpringStarter implements WebApplicationInitializer{
 		
 		//Root Context
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(RootConfig.class, WebSecurityConfig.class);
+		rootContext.register(RootConfig.class, WebSecurityConfig.class, AopConfig.class);
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 		
 		//Web Context

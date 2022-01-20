@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.aop.TimeCheck;
 import com.spring.service.LoginService;
 
 @Service
@@ -19,11 +20,13 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
+	@TimeCheck
 	public int getInsertSignUp(HashMap<String, Object> hashMap) {
 		return loginDao.getUserInsert(hashMap);
 	}
 
 	@Override
+	@TimeCheck
 	public HashMap<String, Object> getUserIdChk(String userId) {
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 		

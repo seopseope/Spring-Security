@@ -39,7 +39,15 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
+		</dependency>
+		
+		<!-- Spring은 AOP 처리가 된 객체를 생성할 떄  AspectJ Weaver 라이브러리에게 도움 받아 동작함-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.7</version>
+			<scope>runtime</scope>
+		</dependency>
 		
 		<!-- Logging -->
 		<dependency>
