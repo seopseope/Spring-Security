@@ -19,7 +19,7 @@ import com.spring.exception.UncheckException;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.spring.controller.*"})
+@ComponentScan(basePackages = {"com.spring.controller.*", "com.spring.exception.*"})
 public class WebConfig implements WebMvcConfigurer{
 	
 	/*

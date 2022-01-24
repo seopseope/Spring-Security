@@ -17,16 +17,14 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/")
-	public String home(Locale locale, Model model, Authentication auth) {
+	public String home(Locale locale, Model model, Authentication auth) throws Exception{
 		logger.info("Welcome home!");
 		if(auth != null) {
-			System.out.println("getAuthorities >>> : "+auth.getAuthorities());
-			System.out.println("getName >>> : "+auth.getName());
-			
+			logger.info("getAuthorities >>> : "+auth.getAuthorities());
+			logger.info("getName >>> : "+auth.getName());
+			// 강제로 에러 생성(에러 테스트 할려고 생성)
+//			throw new Exception();
 			model.addAttribute("userName", auth.getName());
 			model.addAttribute("userAuth", auth.getAuthorities());
 		}
