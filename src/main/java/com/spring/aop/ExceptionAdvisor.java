@@ -6,13 +6,16 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.UnknownHttpStatusCodeException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.spring.controller.index.HomeController;
 
@@ -30,7 +33,7 @@ public class ExceptionAdvisor {
 //		return ResponseEntity.badRequest().body(error);
 //	}
 	
-	// 기본적인 에러를 처리
+	// 기본적인 에러를 처리(500 에러)
 	@ExceptionHandler(Exception.class)
 	public String basicException(Exception ex, Model model) {
 		log.info("Exception >>> : " + ex.getMessage());
@@ -106,6 +109,17 @@ public class ExceptionAdvisor {
 		log.info("UnknownHttpStatusCode Exception >>>> : " + ex.getMessage());
 		model.addAttribute("exception", ex);
 		model.addAttribute("message", "UnknownHttpStatusCode 에러 입니다.");
+		
+		return "/error/error_test";
+	}
+	
+	// 페이지 404 에러 처리
+	@ExceptionHandler(NoHandlerFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public String noHandlerFoundException(NoHandlerFoundException ex, Model model) {
+		log.info("NoHandlerFoundException >>> : " + ex.getRequestURL());
+		model.addAttribute("exception", ex);
+		model.addAttribute("message", "NoHandlerFoundException 에러 입니다.");
 		
 		return "/error/error_test";
 	}
